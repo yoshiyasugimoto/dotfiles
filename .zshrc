@@ -82,11 +82,12 @@ export LANG=en_US.UTF-8
 
 # fzf + ghq integration
 function fzf-ghq() {
-  local selected_dir=$(ghq list -p | fzf --query "$LBUFFER")
+  local selected_dir=$(ghq list | fzf --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
+    BUFFER="cd $(ghq root)/${selected_dir}"
     zle accept-line
   fi
 }
 zle -N fzf-ghq
 bindkey '^g' fzf-ghq
+
