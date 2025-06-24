@@ -38,5 +38,15 @@
     {
         "key": "shift+cmd+backspace",
         "command": "workbench.action.terminal.kill"
+    },
+    {
+        "key": "cmd+shift+[",
+        "command": "workbench.action.previousEditor",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "cmd+shift+]",
+        "command": "workbench.action.nextEditor",
+        "when": "!terminalFocus"
     }
 ]
