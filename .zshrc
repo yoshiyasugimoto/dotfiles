@@ -80,7 +80,7 @@ alias gstp='git stash pop'
 export EDITOR=vim
 export LANG=en_US.UTF-8
 
-# fzf + ghq integration
+# fzf + ghq integration (Ctrl-G)
 function fzf-ghq() {
   local selected_dir=$(ghq list | fzf --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
@@ -91,6 +91,7 @@ function fzf-ghq() {
 zle -N fzf-ghq
 bindkey '^g' fzf-ghq
 
+# fzf history search (Ctrl-R))
 incremental_search_history() {
   selected=`history -E 1 | fzf | cut -b 26-`
   BUFFER=`[ ${#selected} -gt 0 ] && echo $selected || echo $BUFFER`
