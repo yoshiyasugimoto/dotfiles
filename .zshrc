@@ -100,3 +100,6 @@ incremental_search_history() {
 }
 zle -N incremental_search_history
 bindkey "^R" incremental_search_history
+
+# Claude code aliases
+alias yolo="claude --dangerously-skip-permissions"
