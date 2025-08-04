@@ -79,6 +79,10 @@ alias gstp='git stash pop'
 # Environment variables
 export EDITOR=vim
 export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+# zsh のキーマップを Vim →Emacs 風に戻す
+bindkey -e
+
 
 # fzf + ghq integration (Ctrl-G)
 function fzf-ghq() {
