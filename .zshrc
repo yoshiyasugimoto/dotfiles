@@ -95,15 +95,16 @@ function fzf-ghq() {
 zle -N fzf-ghq
 bindkey '^g' fzf-ghq
 
-# fzf history search (Ctrl-R)
 incremental_search_history() {
-  selected=`history -E 1 | fzf --tac | cut -b 25-`
-  BUFFER=`[ ${#selected} -gt 0 ] && echo $selected || echo $BUFFER`
+  local selected
+  # 1番目(最古)から末尾までを一覧、番号を消して(-n)、表示順はfzfで逆順にする(--tac)
+  selected=$(fc -l -n 1 | fzf --tac)
+  [[ -n $selected ]] && BUFFER=$selected
   CURSOR=${#BUFFER}
   zle redisplay
 }
 zle -N incremental_search_history
-bindkey "^R" incremental_search_history
+bindkey '^R' incremental_search_history
 
 # Claude code aliases
 alias yolo="claude --dangerously-skip-permissions"
